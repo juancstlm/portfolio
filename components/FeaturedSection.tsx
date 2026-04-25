@@ -42,7 +42,16 @@ export default function FeaturedSection() {
             </a>
           )}
         </div>
-        <ScreenshotStack images={app.images} />
+        {app.images.length > 0 ? (
+          <ScreenshotStack images={app.images} />
+        ) : (
+          <div className={styles.iconShowcase} style={{ "--tint": app.tint } as React.CSSProperties}>
+            {app.icon && (
+              <img src={app.icon} alt={app.name} className={styles.largeIcon} />
+            )}
+            <span className={styles.iconLabel}>{app.status}</span>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -3,7 +3,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Juan Castillo — Software Engineer",
+  title: "Juan Castillo - Software Engineer",
   description:
     "California-based maker building apps and racing cars on the weekend.",
 };

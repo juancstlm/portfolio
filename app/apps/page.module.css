@@ -157,6 +157,14 @@
   border-radius: 14px;
   overflow: hidden;
   background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.visual:has(> div) {
+  background: transparent;
+  border: 1px solid var(--line);
 }
 
 .visual img {

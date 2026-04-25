@@ -1,6 +1,7 @@
 import siteData from "@/data/site-data.json";
 import AppsNav from "./AppsNav";
 import Icon from "@/components/Icon";
+import ScreenshotStack from "@/components/ScreenshotStack";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
@@ -74,8 +75,10 @@ export default function AppsPage() {
             </div>
 
             <div className={styles.visual}>
-              {app.image ? (
-                <img src={app.image} alt="" />
+              {app.displayMode === "stack" && app.images.length >= 3 ? (
+                <ScreenshotStack images={app.images} />
+              ) : app.displayMode === "image" && (app.image || app.images.length > 0) ? (
+                <img src={app.image || app.images[0]} alt="" />
               ) : (
                 <div
                   className={styles.placeholder}
