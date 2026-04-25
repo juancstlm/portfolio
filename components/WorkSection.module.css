@@ -1,0 +1,157 @@
+.section {
+  margin-bottom: 96px;
+}
+
+.list {
+  margin-top: 40px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 180px 1fr 200px;
+  gap: 40px;
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+  align-items: start;
+}
+
+.period {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.periodText {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.currentDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.location {
+  font-size: 12px;
+  color: var(--mute);
+}
+
+.details {
+  /* content column */
+}
+
+.role {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.company {
+  font-size: 15px;
+  color: var(--mute);
+  margin-bottom: 12px;
+}
+
+.summary {
+  font-size: 15px;
+  line-height: 1.55;
+  margin-bottom: 14px;
+  max-width: 640px;
+}
+
+.stack {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--mute);
+}
+
+.counter {
+  text-align: right;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mute);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.expandBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  border-radius: 999px;
+  font-size: 13px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+  transition: border-color 0.2s;
+}
+
+.expandBtn:hover {
+  border-color: var(--mute);
+}
+
+.expandArrow {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.linkedinLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--mute);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.linkedinLink:hover {
+  color: var(--fg);
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .counter {
+    display: none;
+  }
+
+  .role {
+    font-size: 18px;
+  }
+}

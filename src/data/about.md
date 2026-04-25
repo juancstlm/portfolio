@@ -1,1 +1,0 @@
-# I am [Juan Castillo](https://juancastillom.com).<br> A software engineer based in California

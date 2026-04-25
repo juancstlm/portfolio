@@ -1,1 +1,0 @@
-### You can see more of my work on [GitHub](https://github.com/juancstlm). You can also contact me directly [here](mailto:juancstlm@gmail.com).

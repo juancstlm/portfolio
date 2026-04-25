@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96">
+  <style>
+    .bg { fill: #F5F7FA; }
+    .outline { fill: none; stroke: #0D1821; stroke-width: 2; }
+    .mid-fill { fill: #F5F7FA; }
+    .front { fill: #2EBD9B; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #0D1821; }
+      .outline { stroke: #F5F7FA; }
+      .mid-fill { fill: #0D1821; }
+    }
+  </style>
+  <rect width="96" height="96" rx="21" class="bg"/>
+  <rect x="20" y="22" width="44" height="44" rx="10" class="outline"/>
+  <rect x="28" y="30" width="44" height="44" rx="10" class="outline mid-fill"/>
+  <rect x="36" y="38" width="44" height="44" rx="10" class="front"/>
+</svg>
