@@ -80,14 +80,7 @@ export default function AppsPage() {
               ) : app.displayMode === "image" && (app.image || app.images.length > 0) ? (
                 <img src={app.image || app.images[0]} alt="" />
               ) : (
-                <div
-                  className={styles.placeholder}
-                  style={
-                    {
-                      "--tint": app.tint,
-                    } as React.CSSProperties
-                  }
-                >
+                <div className={styles.placeholder}>
                   Coming soon
                 </div>
               )}
