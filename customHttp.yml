@@ -5,6 +5,9 @@ customHeaders:
         value: public, max-age=0, must-revalidate
 
 customRules:
+  - source: /images/<*>
+    target: /images/<*>
+    status: "200"
   - source: /apps
     target: /apps/index.html
     status: "200"
