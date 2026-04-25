@@ -1,0 +1,99 @@
+import siteData from "@/data/site-data.json";
+import AppsNav from "./AppsNav";
+import Icon from "@/components/Icon";
+import Footer from "@/components/Footer";
+import styles from "./page.module.css";
+
+export default function AppsPage() {
+  const apps = siteData.apps;
+
+  return (
+    <main className={styles.main}>
+      <AppsNav />
+
+      <header className={styles.header}>
+        <div className={styles.label}>Index · {apps.length} apps</div>
+        <h1 className={styles.heading}>Personal apps and tools.</h1>
+        <p className={styles.subtitle}>
+          Things I&rsquo;ve built for myself that turned out to be useful for
+          other people too. Each has its own story below.
+        </p>
+      </header>
+
+      <div className={styles.appList}>
+        {apps.map((app) => (
+          <article key={app.id} className={styles.card}>
+            <div className={styles.cardInfo}>
+              <div className={styles.cardIdent}>
+                {app.icon ? (
+                  <img src={app.icon} alt="" className={styles.icon} />
+                ) : (
+                  <div
+                    className={styles.iconPlaceholder}
+                    style={{ background: app.tint }}
+                  >
+                    {app.name[0]}
+                  </div>
+                )}
+                <div>
+                  <div className={styles.appName}>{app.name}</div>
+                  <div className={styles.appTag}>{app.tag}</div>
+                </div>
+              </div>
+
+              <p className={styles.description}>{app.description}</p>
+
+              <div className={styles.techTags}>
+                {app.tech.map((t) => (
+                  <span key={t} className={styles.tag}>
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              <div className={styles.cardActions}>
+                {app.link ? (
+                  <a href={app.link} className={styles.cta}>
+                    {app.linkLabel} <Icon name="external" size={12} />
+                  </a>
+                ) : (
+                  <span className={styles.comingSoon}>{app.linkLabel}</span>
+                )}
+                <span
+                  className={styles.status}
+                  style={{
+                    color:
+                      app.statusKind === "live"
+                        ? "var(--accent)"
+                        : "var(--mute)",
+                  }}
+                >
+                  ● {app.status}
+                </span>
+              </div>
+            </div>
+
+            <div className={styles.visual}>
+              {app.image ? (
+                <img src={app.image} alt="" />
+              ) : (
+                <div
+                  className={styles.placeholder}
+                  style={
+                    {
+                      "--tint": app.tint,
+                    } as React.CSSProperties
+                  }
+                >
+                  Coming soon
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <Footer />
+    </main>
+  );
+}

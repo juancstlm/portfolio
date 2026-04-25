@@ -1,0 +1,144 @@
+{
+  "bio": "I'm Juan Castillo, a California-based maker building apps and racing cars on the weekend.",
+  "availableForWork": true,
+  "availableText": "Available for select projects",
+  "footer": {
+    "copyright": "2026 Juan Castillo",
+    "tagline": "Built in Northern California"
+  },
+  "links": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/juancstlm",
+      "handle": "@juancstlm",
+      "icon": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/juancstlm",
+      "handle": "in/juancstlm",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Email",
+      "href": "mailto:juancstlm@gmail.com",
+      "handle": "juancstlm@gmail.com",
+      "icon": "mail"
+    }
+  ],
+  "work": [
+    {
+      "company": "agile six",
+      "role": "Senior React Native Software Engineer",
+      "period": "Aug 2024 — Present",
+      "location": "Remote",
+      "summary": "Building React Native and React.js applications.",
+      "stack": ["React Native", "React.js"],
+      "current": true
+    },
+    {
+      "company": "Tesla",
+      "role": "Software Engineer",
+      "period": "Mar 2022 — Jul 2024",
+      "location": "Fremont, CA",
+      "summary": "Shipped mobile and backend features across Tesla's product surface.",
+      "stack": ["React Native", "Go", "TypeScript"],
+      "current": false
+    },
+    {
+      "company": "KFC US",
+      "role": "Associate Manager, RIS · React Native Developer",
+      "period": "Mar 2021 — Mar 2022",
+      "location": "Remote",
+      "summary": "React Native development and mobile engineering leadership on the RIS team.",
+      "stack": ["React Native", "TypeScript"],
+      "current": false
+    },
+    {
+      "company": "County of Monterey",
+      "role": "Poll Worker",
+      "period": "Nov 2020",
+      "location": "Salinas, CA",
+      "summary": "Poll worker for the 2020 Election.",
+      "stack": [],
+      "current": false
+    },
+    {
+      "company": "First Tech Federal Credit Union",
+      "role": "Mobile Engineer",
+      "period": "Aug 2019 — Jul 2020",
+      "location": "California",
+      "summary": "Mobile engineering on the First Tech banking app.",
+      "stack": ["React Native", "iOS", "Android"],
+      "current": false
+    }
+  ],
+  "apps": [
+    {
+      "id": "atlas",
+      "name": "Atlas",
+      "tag": "Workout tracker",
+      "year": "2020",
+      "status": "Live on App Store",
+      "statusKind": "live",
+      "blurb": "A clean, stats-focused workout logger for iOS. Designed and built solo with React Native.",
+      "description": "Atlas is a workout logger built for people who care about progressive overload. It tracks lifts, computes 1RMs, and gets out of the way during a session. Built solo with React Native, Redux, and Realm.",
+      "icon": "/images/projects/atlas-icon.png",
+      "image": "/images/projects/atlas1.png",
+      "images": [
+        "/images/projects/atlas1.png",
+        "/images/projects/atlas2.png",
+        "/images/projects/atlas3.png"
+      ],
+      "link": "https://apps.apple.com/us/app/atlas-workout-logger/id1538171180",
+      "linkLabel": "App Store",
+      "tech": ["React Native", "Redux", "Realm", "Jest"],
+      "tint": "#4ad6a3",
+      "featured": true,
+      "featuredDetails": {
+        "role": "Sole designer & developer",
+        "stack": "React Native · Redux · Realm",
+        "status": "Live on the App Store"
+      }
+    },
+    {
+      "id": "onerm",
+      "name": "OneRM",
+      "tag": "Strength calculator",
+      "year": "2025",
+      "status": "In development",
+      "statusKind": "wip",
+      "blurb": "A focused tool for estimating one-rep maxes and planning warmup sets — the part of Atlas I use the most, broken out.",
+      "description": "OneRM strips the workout logger down to the calculation. Pick a lift, estimate your max, get a warm-up ramp. Designed for fast, ad-hoc checks at the gym.",
+      "icon": null,
+      "image": null,
+      "images": [],
+      "link": null,
+      "linkLabel": "Coming soon",
+      "tech": ["Swift", "SwiftUI"],
+      "tint": "#ef4023",
+      "featured": false
+    },
+    {
+      "id": "wsigte",
+      "name": "WSIGTE",
+      "tag": "Where Should I Go To Eat?",
+      "year": "2019",
+      "status": "Live at wsigte.com",
+      "statusKind": "live",
+      "blurb": "Map-based restaurant roulette for indecisive groups. A tribute to wtfsigte.com.",
+      "description": "Tap a button, get a place. WSIGTE picks somewhere nearby for when nobody can decide. Built on Apple MapKit JS, with a Lambda backend handling auth and tokens.",
+      "icon": "/images/projects/wsigte-icon.png",
+      "image": "/images/projects/wsigte-1.png",
+      "images": [
+        "/images/projects/wsigte-1.png",
+        "/images/projects/wsigte-2.png"
+      ],
+      "link": "https://wsigte.com",
+      "linkLabel": "Open site",
+      "tech": ["React", "MapKit JS", "AWS Lambda", "Express"],
+      "tint": "#c2410c",
+      "featured": false
+    }
+  ]
+}
