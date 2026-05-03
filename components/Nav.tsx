@@ -15,9 +15,9 @@ export default function Nav() {
         juancastillom.com
       </div>
       <nav className={styles.links}>
-        <a href="#work">Work</a>
         <a href="#featured">Projects</a>
         <Link href="/apps">Apps</Link>
+        <a href="#work">Work</a>
         <a href="#contact">Contact</a>
         <button
           className={styles.themeToggle}

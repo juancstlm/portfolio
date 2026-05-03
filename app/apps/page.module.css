@@ -49,6 +49,7 @@
   gap: 40px;
   align-items: center;
   overflow: hidden;
+  scroll-margin-top: 32px;
 }
 
 .cardInfo {

@@ -1,3 +1,6 @@
+"use client";
+
+import Link from "next/link";
 import siteData from "@/data/site-data.json";
 import SectionHeader from "./SectionHeader";
 import Icon from "./Icon";
@@ -13,7 +16,11 @@ export default function AppsGrid() {
       />
       <div className={styles.grid}>
         {siteData.apps.map((app) => (
-          <div key={app.id} className={styles.card}>
+          <Link
+            key={app.id}
+            href={`/apps#${app.id}`}
+            className={styles.card}
+          >
             <div className={styles.cardTop}>
               <div className={styles.cardIdent}>
                 {app.icon ? (
@@ -48,10 +55,21 @@ export default function AppsGrid() {
             </div>
             <p className={styles.blurb}>{app.blurb}</p>
             <div className={styles.cardBottom}>
-              <span>{app.status}</span>
-              {app.link && <Icon name="arrow" size={12} />}
+              {app.link ? (
+                <button
+                  className={styles.liveLink}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.open(app.link, "_blank", "noopener,noreferrer");
+                  }}
+                >
+                  {app.status} <Icon name="external" size={10} />
+                </button>
+              ) : (
+                <span>{app.status}</span>
+              )}
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

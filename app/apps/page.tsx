@@ -23,7 +23,7 @@ export default function AppsPage() {
 
       <div className={styles.appList}>
         {apps.map((app) => (
-          <article key={app.id} className={styles.card}>
+          <article key={app.id} id={app.id} className={styles.card}>
             <div className={styles.cardInfo}>
               <div className={styles.cardIdent}>
                 {app.icon ? (
