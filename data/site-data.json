@@ -32,7 +32,7 @@
       "role": "Senior React Native Software Engineer",
       "period": "Aug 2024 - Present",
       "location": "Remote",
-      "summary": "Building React Native and React.js applications.",
+      "summary": "Building a better mobile and web experience for veterans.",
       "stack": ["React Native", "React.js"],
       "current": true
     },
@@ -131,7 +131,7 @@
         "/images/projects/wsigte-1.png",
         "/images/projects/wsigte-2.png"
       ],
-      "link": "https://wsigte.com",
+      "link": "https://www.wsigte.com",
       "linkLabel": "Open site",
       "tech": ["React", "MapKit JS", "AWS Lambda", "Express"],
       "tint": "#c2410c",
@@ -148,8 +148,8 @@
       "blurb": "A themable React Native component library with 20+ components. Powers Atlas and other apps.",
       "description": "A themable design system library with core UI components for React Native. Includes buttons, text inputs, sheets, segmented controls, forms, and more. Built with TypeScript, supports light and dark themes out of the box, and is published on npm.",
       "icon": "/images/projects/ads-icon.svg",
-      "image": "/images/projects/ads1.png",
-      "images": ["/images/projects/ads1.png"],
+      "image": "/images/projects/ads.png",
+      "images": ["/images/projects/ads.png"],
       "link": "https://www.npmjs.com/package/atlas-design-system",
       "linkLabel": "npm",
       "tech": ["React Native", "TypeScript", "Reanimated", "Informed"],
