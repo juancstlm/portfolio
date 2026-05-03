@@ -72,7 +72,7 @@
       "year": "2025",
       "status": "Live on App Store",
       "statusKind": "live",
-      "blurb": "A focused tool for estimating one-rep maxes and planning warmup sets - the part of Atlas I use the most, broken out.",
+      "blurb": "A more refined version of Atlas",
       "description": "OneRM strips the workout logger down to the calculation. Pick a lift, enter your working weight and reps, and get an estimated one-rep max with a warm-up ramp. Built with React Native and Expo, with WatermelonDB for local storage, Apple Health integration, and i18n support.",
       "icon": "/images/projects/onerm-icon.png",
       "image": "/images/projects/onerm4.png",
