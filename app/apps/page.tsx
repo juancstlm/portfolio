@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import styles from "./page.module.css";
 
 export default function AppsPage() {
-  const apps = siteData.apps;
+  const apps = [...siteData.apps].sort((a, b) => Number(b.year) - Number(a.year));
 
   return (
     <main className={styles.main}>
