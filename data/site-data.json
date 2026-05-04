@@ -128,8 +128,7 @@
       "icon": "/images/projects/wsigte-icon.png",
       "image": "/images/projects/wsigte-1.png",
       "images": [
-        "/images/projects/wsigte-1.png",
-        "/images/projects/wsigte-2.png"
+        "/images/projects/wsigte-1.png"
       ],
       "link": "https://www.wsigte.com",
       "linkLabel": "Open site",
