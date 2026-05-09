@@ -1,7 +1,10 @@
+"use client";
+
 import siteData from "@/data/site-data.json";
 import SectionHeader from "./SectionHeader";
 import Icon from "./Icon";
 import type { IconName } from "./Icon";
+import { track } from "@/lib/track";
 import styles from "./ContactSection.module.css";
 
 export default function ContactSection() {
@@ -10,7 +13,14 @@ export default function ContactSection() {
       <SectionHeader label="Contact" title="Say hi" />
       <div className={styles.links}>
         {siteData.links.map((l) => (
-          <a key={l.label} href={l.href} className={styles.link}>
+          <a
+            key={l.label}
+            href={l.href}
+            className={styles.link}
+            onClick={() =>
+              track("contact_click", { label: l.label, handle: l.handle })
+            }
+          >
             <Icon name={l.icon as IconName} size={14} />
             {l.handle}
             <Icon name="external" size={12} />

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useTheme } from "./ThemeProvider";
 import Icon from "./Icon";
+import { track } from "@/lib/track";
 import styles from "./Nav.module.css";
 
 export default function Nav() {
@@ -16,7 +17,9 @@ export default function Nav() {
       </div>
       <nav className={styles.links}>
         <a href="#featured">Projects</a>
-        <Link href="/apps">Apps</Link>
+        <Link href="/apps" onClick={() => track("nav_apps_click")}>
+          Apps
+        </Link>
         <a href="#work">Work</a>
         <a href="#contact">Contact</a>
         <button

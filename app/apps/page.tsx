@@ -1,6 +1,6 @@
 import siteData from "@/data/site-data.json";
 import AppsNav from "./AppsNav";
-import Icon from "@/components/Icon";
+import AppLink from "./AppLink";
 import ScreenshotStack from "@/components/ScreenshotStack";
 import Footer from "@/components/Footer";
 import styles from "./page.module.css";
@@ -54,9 +54,12 @@ export default function AppsPage() {
 
               <div className={styles.cardActions}>
                 {app.link ? (
-                  <a href={app.link} className={styles.cta}>
-                    {app.linkLabel} <Icon name="external" size={12} />
-                  </a>
+                  <AppLink
+                    appId={app.id}
+                    href={app.link}
+                    label={app.linkLabel}
+                    className={styles.cta}
+                  />
                 ) : (
                   <span className={styles.comingSoon}>{app.linkLabel}</span>
                 )}

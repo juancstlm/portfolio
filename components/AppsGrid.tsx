@@ -4,6 +4,7 @@ import Link from "next/link";
 import siteData from "@/data/site-data.json";
 import SectionHeader from "./SectionHeader";
 import Icon from "./Icon";
+import { track } from "@/lib/track";
 import styles from "./AppsGrid.module.css";
 
 export default function AppsGrid() {
@@ -60,6 +61,10 @@ export default function AppsGrid() {
                   className={styles.liveLink}
                   onClick={(e) => {
                     e.preventDefault();
+                    track("app_link_click", {
+                      app: app.id,
+                      source: "home_grid",
+                    });
                     window.open(app.link, "_blank", "noopener,noreferrer");
                   }}
                 >
