@@ -66,6 +66,25 @@
   ],
   "apps": [
     {
+      "id": "calautox",
+      "name": "CalAutoX",
+      "tag": "Autocross results portal",
+      "year": "2026",
+      "status": "Live at sfr.calautox.com",
+      "statusKind": "live",
+      "blurb": "Championship results portal for SFRSCCA autocross — season standings, per-event results, and live in-event timing.",
+      "description": "CalAutoX is the season-long results portal for SFRSCCA / California Auto X autocross. Drivers can browse championship standings, per-event class results, and individual run times; a live view streams the in-progress order every second during a race. Organizers post final results and correct scores through an authenticated admin dashboard, with every change audit-logged. Self-hosted on Proxmox behind a Cloudflare Tunnel.",
+      "icon": "/images/projects/calautox-icon.svg",
+      "image": "/images/projects/calautox-1.png",
+      "images": ["/images/projects/calautox-1.png"],
+      "link": "https://sfr.calautox.com",
+      "linkLabel": "Open site",
+      "tech": ["Go", "React", "TypeScript", "PostgreSQL", "Vite", "Docker"],
+      "tint": "#59D50B",
+      "displayMode": "image",
+      "featured": false
+    },
+    {
       "id": "onerm",
       "name": "OneRM",
       "tag": "Workout logger",
