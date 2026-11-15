@@ -43,12 +43,12 @@ export default function OneRMPrivacyPage() {
 
         <h2>Usage stats</h2>
         <p>
-          Unless you turn it off, the app sends anonymous usage stats: which
-          screens you open, which features you use, how long a workout took,
-          and your screen size. They&rsquo;re grouped under a random ID made
-          when you install the app. They don&rsquo;t include your name, email,
-          exercises or weights, and I can&rsquo;t link them to you. You can
-          turn this off in Settings under Share Anonymous Usage Data.
+          Usage stats are off unless you turn them on in Settings under Share
+          Anonymous Usage Data. If you do, the app sends which screens you
+          open, which features you use, how long a workout took, and your
+          screen size, grouped under a random ID. They don&rsquo;t include
+          your name, email, exercises or weights, and I can&rsquo;t link them
+          to you. Turning them off deletes that ID and anything not yet sent.
         </p>
 
         <h2>Lock screen rest timer (iPhone)</h2>
