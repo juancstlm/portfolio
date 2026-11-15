@@ -146,6 +146,18 @@
   letter-spacing: 0.05em;
 }
 
+.secondaryLink {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mute);
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.secondaryLink:hover {
+  color: var(--fg);
+}
+
 .status {
   font-family: var(--font-mono);
   font-size: 10px;

@@ -4,7 +4,7 @@ import { useTheme } from "@/components/ThemeProvider";
 import Icon from "@/components/Icon";
 import styles from "./AppsNav.module.css";
 
-export default function AppsNav() {
+export default function AppsNav({ route = "/apps" }: { route?: string }) {
   const { theme, toggle } = useTheme();
 
   return (
@@ -13,7 +13,7 @@ export default function AppsNav() {
         ← juancastillom.com
       </a>
       <div className={styles.right}>
-        <span className={styles.route}>/apps</span>
+        <span className={styles.route}>{route}</span>
         <button
           className={styles.themeToggle}
           onClick={toggle}

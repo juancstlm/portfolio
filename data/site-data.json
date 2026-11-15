@@ -102,6 +102,7 @@
       ],
       "link": "https://apps.apple.com/us/app/onerm-workout-logger/id6746527690",
       "linkLabel": "App Store",
+      "privacy": "/OneRM/privacy/",
       "tech": ["React Native", "Expo", "WatermelonDB", "TypeScript", "APNS"],
       "tint": "#4ad6a3",
       "displayMode": "image",

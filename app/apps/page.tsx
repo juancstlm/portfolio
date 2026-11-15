@@ -63,6 +63,11 @@ export default function AppsPage() {
                 ) : (
                   <span className={styles.comingSoon}>{app.linkLabel}</span>
                 )}
+                {"privacy" in app && app.privacy ? (
+                  <a href={app.privacy} className={styles.secondaryLink}>
+                    Privacy
+                  </a>
+                ) : null}
                 <span
                   className={styles.status}
                   style={{
