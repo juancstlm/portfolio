@@ -12,9 +12,12 @@ export default function Top({ current }: { current?: "apps" }) {
         Juan Castillo
       </Link>
       <div className="top-r">
+        {/* No prefetch: Next 16 prefetching /apps injects a preload for its first screenshot into this page,
+            which the browser then reports as unused. The static page is small enough to load on click. */}
         <Link
           className="top-link"
           href="/apps/"
+          prefetch={false}
           aria-current={current === "apps" ? "page" : undefined}
           onClick={() => track("nav_apps_click")}
         >

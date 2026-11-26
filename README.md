@@ -1,11 +1,12 @@
 # juancastillom.com
 
-Juan Castillo's personal site. Next.js 15 (App Router), React 19 and TypeScript, exported as static files to `out/` and deployed by AWS Amplify on push (`amplify.yml`: `npm ci`, `npx next build`, artifacts in `out/`). There is no server code.
+Juan Castillo's personal site. Next.js 16 (App Router), React 19 and TypeScript, exported as static files to `out/` and deployed by AWS Amplify on push (`amplify.yml`: Node 22 via nvm, `npm ci`, `npx next build`, artifacts in `out/`). Needs Node 20.9 or newer. There is no server code.
 
 ```bash
 npm install
 npm run dev        # http://localhost:3000
 npm run build      # static export to out/
+npm run typecheck  # tsc --noEmit
 npm run data       # refresh data/history.json + the no-JS plot (Juan's Mac only, see "Data pipeline")
 ```
 
