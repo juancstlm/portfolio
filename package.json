@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "data": "python3 scripts/build-history.py && node scripts/build-plot.mjs"
   },
   "dependencies": {
+    "gsap": "^3.15.1",
     "next": "^15.5.18",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
@@ -17,6 +19,7 @@
     "@types/node": "^22.15.3",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
+    "playwright": "^1.56.1",
     "typescript": "^5.8.3"
   }
 }

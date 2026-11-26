@@ -25,3 +25,8 @@ yarn-error.log*
 tsconfig.tsbuildinfo
 CLAUDE.md
 .claude
+# auteur
+design/shots/
+design/moodboard/
+design/refs/
+scripts/history-sources.local.json

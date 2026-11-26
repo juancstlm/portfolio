@@ -1,0 +1,126 @@
+/* "Every commit": the peak on the home page. Everything is prefixed d- so it never touches the shell.
+   Ported verbatim from the approved prototype D; lib/commit-peak.ts positions the d-* overlay labels. */
+
+.d-peak { position: relative; border-top: 1px solid var(--line); }
+
+/* ---------- readable version (no JS, reduced motion, screen readers) ---------- */
+.d-static { padding: 96px var(--gutter) 120px; }
+.d-h { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 3.2vw, 3rem); letter-spacing: -0.03em; line-height: 1.02; }
+.d-sum { margin-top: 16px; max-width: 56ch; color: var(--ink-2); }
+.d-fig { margin: 40px calc(var(--gutter) * -1) 0; }
+.d-fig img { width: 100%; height: auto; }
+.d-lists { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; margin-top: 48px; }
+.d-years { grid-column: 1 / span 4; border-collapse: collapse; font-variant-numeric: tabular-nums; align-self: start; }
+.d-years caption { text-align: left; font-family: var(--display); font-weight: 600; font-size: 1.25rem; padding-bottom: 10px; }
+.d-years th, .d-years td { text-align: left; padding: 7px 18px 7px 0; border-top: 1px solid var(--line); font-weight: 400; }
+.d-years th { font-family: var(--display); font-weight: 600; }
+.d-years td span { color: var(--ink-2); margin-left: 10px; }
+.d-miles { grid-column: 6 / span 7; list-style: none; }
+.d-miles li { display: grid; grid-template-columns: 9.5rem 1fr; column-gap: 20px; padding: 14px 0; border-top: 1px solid var(--line); }
+.d-miles time { grid-row: span 3; color: var(--ink-2); font-size: 0.95rem; padding-top: 2px; }
+.d-miles b { font-family: var(--display); font-weight: 600; font-size: 1.2rem; letter-spacing: -0.01em; }
+.d-miles p { margin-top: 4px; max-width: 54ch; }
+.d-miles a { margin-top: 6px; font-weight: 600; text-underline-offset: 4px; justify-self: start; }
+
+/* live scene: the readable block stays in the DOM for screen readers only */
+.d-live .d-static { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; padding: 0; }
+
+/* ---------- live stage ---------- */
+.d-stage { position: relative; height: 100vh; height: 100lvh; overflow: hidden; contain: layout paint; }
+.d-svh { position: absolute; left: 0; top: 0; width: 0; height: 100vh; height: 100svh; visibility: hidden; }
+/* the secret ending: one dark full-bleed layer, moved by the wipe edge (fills the large viewport on phones) */
+.d-dim { position: absolute; inset: 0; background: oklch(0.19 0.01 165); transform: translateX(100%); visibility: hidden; will-change: transform; }
+/* clip boxes: translated to the edge with overflow hidden; their .d-pin child is counter-translated so labels stay put */
+.d-clip { position: absolute; inset: 0; overflow: hidden; pointer-events: none; will-change: transform; }
+.d-pin { position: absolute; inset: 0; will-change: transform; }
+.d-dark { visibility: hidden; transform: translateX(100%); }
+/* the dark side: same labels in a light ink at reduced alpha (quiet, still readable), in both page themes */
+.d-dark { --ink: oklch(0.97 0 0 / 0.5); --ink-2: oklch(0.97 0 0 / 0.45); --page: transparent; --line: oklch(0.97 0 0 / 0.12); color: var(--ink); }
+.d-dark .d-mk { opacity: 0.35; }
+.d-dark .d-card, .d-dark .d-stats, .d-paper .d-secret { display: none; }
+.d-dark .d-legend { opacity: 0.7; }
+[data-theme="dark"] .d-dim { background: oklch(0.11 0.008 165); }
+.d-cv { position: absolute; left: 0; top: 0; display: block; }
+.d-over { position: absolute; inset: 0; pointer-events: none; }
+.d-over > * { position: absolute; left: 0; top: 0; }
+
+/* readout: a narrow column over the plot's quiet early years. Numbers are rendered directly, never tweened. */
+.d-read { position: absolute; left: var(--gutter); top: clamp(28px, 6.5vh, 64px); width: min(340px, 60vw); pointer-events: none; }
+.d-title { font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem, 1.6vw, 1.45rem); letter-spacing: -0.015em; line-height: 1.1; }
+.d-date { margin-top: 14px; font-family: var(--display); font-weight: 500; font-size: clamp(1.15rem, 1.7vw, 1.6rem); letter-spacing: -0.01em; line-height: 1.1; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.d-total { margin-top: 2px; display: flex; flex-direction: column; }
+.d-num { font-family: var(--display); font-weight: 700; font-size: clamp(4rem, 8.4vw, 7.6rem); letter-spacing: -0.045em; line-height: 0.95; font-variant-numeric: tabular-nums; }
+.d-unit { margin-top: 6px; font-size: 1rem; color: var(--ink-2); }
+.d-active { margin-top: 14px; min-height: 1.5em; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 0.95rem; }
+.d-active span { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.d-active i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.d-active .d-quiet { color: var(--ink-2); }
+
+/* the secret readout: light type for the dark beat, same in both page themes */
+.d-secret { position: absolute; left: 0; top: 0; width: min(620px, calc(100vw - 2 * var(--gutter))); }
+.d-s-label { font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem, 1.6vw, 1.45rem); letter-spacing: -0.015em; line-height: 1.1; color: oklch(0.74 0.012 165); }
+.d-s-line { margin-top: 18px; font-family: var(--display); font-weight: 600; font-size: clamp(2.7rem, 5.4vw, 5.2rem); letter-spacing: -0.035em; line-height: 0.98; color: oklch(0.97 0.004 165); text-wrap: balance; }
+.d-card[data-app="next"] p, .d-miles .d-fate { font-family: var(--display); font-weight: 600; letter-spacing: -0.015em; }
+.d-card[data-app="next"] p { font-size: 19px; line-height: 1.15; }
+.d-miles .d-fate { font-size: 1.15rem; }
+
+/* axis + labels positioned by peak.js with transforms */
+.d-yr { font-family: var(--display); font-weight: 600; font-size: 15px; line-height: 1; letter-spacing: -0.005em; font-variant-numeric: tabular-nums; will-change: transform, opacity; }
+.d-yt { font-size: 13px; line-height: 1; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; will-change: transform, opacity; }
+.d-mo { font-size: 12.5px; line-height: 1; color: var(--ink-2); white-space: nowrap; opacity: 0; will-change: transform, opacity; }
+.d-tick { font-size: 12px; line-height: 1; color: var(--ink-2); white-space: nowrap; padding: 2px 6px 2px 0; background: var(--page); }
+.d-gap { font-size: 14px; line-height: 1.2; color: var(--ink-2); white-space: nowrap; will-change: transform, opacity; }
+.d-wk { font-size: 12.5px; line-height: 1; color: var(--ink-2); white-space: nowrap; will-change: transform, opacity; }
+.d-note { font-size: 12.5px; line-height: 1.3; color: var(--ink-2); }
+.d-legend { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 14px; font-size: 12.5px; line-height: 1.3; color: var(--ink-2); }
+.d-legend span { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+.d-legend i { width: 7px; height: 7px; border-radius: 50%; background: var(--c); }
+
+/* milestone markers: icon on its stem; the latest one carries a label, caption and link */
+.d-mk { will-change: transform; }
+.d-ic { position: absolute; z-index: 1; left: -14px; top: -14px; width: 28px; height: 28px; border-radius: 22.5%; overflow: hidden; box-shadow: 0 0 0 2px var(--page), 0 4px 12px -4px oklch(0.23 0.02 165 / 0.45); will-change: transform, opacity; opacity: 0; }
+.d-ic img { width: 100%; height: 100%; object-fit: cover; }
+.d-ic.d-cax { background: #121417; }
+.d-ic.d-cax img { object-fit: contain; padding: 3px; }
+.d-ic.d-next { background: oklch(0.2 0.015 165); }
+.d-ic.d-next::after { content: ""; position: absolute; left: 50%; top: 50%; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: oklch(0.97 0.004 165); }
+[data-theme="dark"] .d-ic.d-next { background: oklch(0.95 0.006 165); }
+[data-theme="dark"] .d-ic.d-next::after { background: oklch(0.19 0.01 165); }
+.d-card { position: absolute; top: -14px; width: 236px; padding: 4px 6px 6px; margin: -4px -6px 0; background: var(--page); border-radius: 6px; opacity: 0; visibility: hidden; will-change: opacity; }
+.d-card.d-r { left: 22px; }
+.d-card.d-l { right: 22px; text-align: right; }
+.d-card b { display: block; font-family: var(--display); font-weight: 600; font-size: 16px; line-height: 1.2; letter-spacing: -0.01em; color: var(--ink); }
+.d-card time { display: block; margin-top: 2px; font-size: 12.5px; color: var(--ink-2); }
+.d-card p { margin-top: 5px; font-size: 13.5px; line-height: 1.4; color: var(--ink); text-wrap: pretty; }
+.d-card a { display: inline-block; margin-top: 5px; font-size: 13.5px; font-weight: 600; text-underline-offset: 3px; pointer-events: auto; }
+.d-card a::after { content: " \2197"; }
+.d-dic { display: none; }
+
+/* phones: one card at a time, docked under the readout, with its own icon */
+.d-over > .d-dock { left: var(--gutter); right: var(--gutter); display: grid; }
+.d-dock .d-card { position: relative; grid-area: 1 / 1; top: auto; left: auto; right: auto; width: auto; margin: 0; padding: 0 0 0 42px; background: none; text-align: left; }
+.d-dock .d-dic { display: block; position: absolute; left: 0; top: 1px; width: 30px; height: 30px; opacity: 1; box-shadow: 0 0 0 1px var(--line); }
+
+/* reduced motion: no pin, the end state drawn once, the milestone list below it */
+.d-rm .d-stage { height: min(100vh, 900px); }
+.d-rm .d-static { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; padding-top: 24px; }
+.d-rm .d-static .d-h, .d-rm .d-static .d-sum, .d-rm .d-static .d-fig { display: none; }
+.d-rm .d-lists { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .d-static { padding-top: 64px; }
+  .d-lists { display: block; }
+  .d-years { width: 100%; margin-bottom: 40px; }
+  .d-miles li { grid-template-columns: 1fr; }
+  .d-miles time { grid-row: auto; }
+  .d-read { top: 22px; width: auto; right: var(--gutter); }
+  .d-active { min-height: calc(2 * 1.55em + 4px); align-content: flex-start; } /* room for two lines, so the dock below never moves */
+  .d-date { margin-top: 10px; }
+  .d-unit { font-size: 0.95rem; margin-top: 4px; }
+  .d-active { margin-top: 10px; font-size: 0.9rem; }
+  .d-yr { font-size: 13px; }
+  .d-yt { font-size: 11.5px; }
+  .d-ic { left: -12px; top: -12px; width: 24px; height: 24px; }
+  .d-card b { font-size: 15px; }
+  .d-card p, .d-card a { font-size: 12.5px; }
+}

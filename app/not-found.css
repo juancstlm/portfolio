@@ -1,0 +1,5 @@
+/* 404: one line on the paper, a way back. */
+.nf { min-height: 60vh; padding: clamp(48px, 11vh, 132px) var(--gutter); }
+.nf h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2.5rem, 5.6vw, 5.75rem); line-height: 1.04; letter-spacing: -0.032em; }
+.nf p { margin-top: 20px; font-size: 1.1rem; }
+.nf a { font-weight: 600; text-underline-offset: 4px; }

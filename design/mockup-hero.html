@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup: Rewind (static)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@400..800&family=Atkinson+Hyperlegible+Next:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: oklch(0.975 0.004 165);
+  --ink: oklch(0.23 0.02 165);
+  --ink-2: oklch(0.42 0.015 165);
+  --line: oklch(0.23 0.02 165 / 0.14);
+  --mint: oklch(0.80 0.13 165);
+  --green: oklch(0.45 0.09 165);
+  --display: "Funnel Display", "Helvetica Neue", Arial, sans-serif;
+  --text: "Atkinson Hyperlegible Next", "Helvetica Neue", Arial, sans-serif;
+  --gutter: clamp(20px, 4vw, 64px);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--page); color: var(--ink); font-family: var(--text); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* top edge: name + toggle, no bar */
+.top { display: flex; justify-content: space-between; align-items: center; padding: 28px var(--gutter); }
+.name { font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; text-decoration: none; }
+.toggle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line); background: none; display: grid; place-items: center; color: var(--ink); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; padding: clamp(48px, 12vh, 140px) var(--gutter) clamp(64px, 14vh, 160px); }
+.hero h1 { grid-column: 1 / span 10; font-family: var(--display); font-weight: 600; font-size: clamp(2.5rem, 5.6vw, 5.75rem); line-height: 1.04; letter-spacing: -0.032em; text-wrap: balance; }
+.ic { display: inline-block; width: 0.84em; height: 0.84em; border-radius: 22.5%; vertical-align: -0.1em; margin: 0 0.04em; box-shadow: 0 1px 0 oklch(0.23 0.02 165 / 0.06), 0 6px 16px -6px oklch(0.23 0.02 165 / 0.35); object-fit: cover; }
+.ic.cax { background: #121417; padding: 0.08em; object-fit: contain; }
+.hero .lede { grid-column: 7 / span 5; margin-top: clamp(32px, 6vh, 64px); font-size: 1.18rem; line-height: 1.55; max-width: 46ch; color: var(--ink); text-wrap: pretty; }
+.hero .lede + .lede { margin-top: 18px; }
+.hero .label { grid-column: 9 / span 4; margin-top: clamp(40px, 7vh, 72px); padding-top: 18px; border-top: 1px solid var(--line); }
+.hero .label dl { display: grid; grid-template-columns: 6.5rem 1fr; row-gap: 8px; font-size: 1.02rem; }
+.hero .label dt { color: var(--ink-2); }
+.hero .label dd { margin: 0; }
+.hero .label .avail { margin-top: 20px; }
+.avail { display: inline-flex; align-items: center; gap: 10px; font-weight: 600; }
+.avail i { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 3px oklch(0.80 0.13 165 / 0.25); }
+.hero .lede a { text-decoration-color: oklch(0.45 0.09 165 / 0.5); text-underline-offset: 3px; }
+
+/* featured OneRM: screen bleeds off the right edge */
+.feat { position: relative; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; padding: 40px 0 120px var(--gutter); overflow: hidden; border-top: 1px solid var(--line); }
+.feat .copy { grid-column: 1 / span 4; padding-top: 72px; align-self: start; }
+.feat h2 { display: flex; align-items: center; gap: 16px; font-family: var(--display); font-weight: 600; font-size: clamp(2.2rem, 3.6vw, 3.4rem); letter-spacing: -0.03em; line-height: 1; }
+.feat h2 img { width: 56px; height: 56px; border-radius: 22.5%; }
+.feat .sub { margin-top: 20px; font-size: 1.1rem; max-width: 34ch; }
+.feat .meta { margin-top: 18px; color: var(--ink-2); font-size: 0.95rem; }
+.btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; padding: 12px 20px; border-radius: 999px; background: var(--ink); color: var(--page); font-weight: 600; text-decoration: none; font-size: 0.98rem; }
+.feat .stage { grid-column: 5 / -1; position: relative; min-height: 1460px; }
+.feat .screen { position: absolute; top: 0; left: 351px; width: 640px; border-radius: 66px; overflow: hidden; box-shadow: -24px 40px 80px -30px oklch(0.23 0.02 165 / 0.45), 0 0 0 1px oklch(0.23 0.02 165 / 0.08); }
+.note { position: absolute; left: 0; width: 260px; font-size: 0.98rem; line-height: 1.45; z-index: 1; }
+.note::after { content: ""; position: absolute; top: 0.72em; left: calc(100% + 14px); width: var(--len); height: 1px; background: currentColor; opacity: 0.6; }
+.note::before { content: ""; position: absolute; top: calc(0.72em - 4px); left: calc(100% + 14px + var(--len) - 4px); width: 9px; height: 9px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 3px var(--page); }
+.n1 { top: 332px; --len: 150px; }
+.n2 { top: 833px; --len: 128px; }
+.n3 { top: 1141px; --len: 112px; }
+/* rewind frames (static keyframes of the pinned stage) */
+.frame { position: relative; height: 900px; min-height: 100vh; overflow: hidden; display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; padding: 0 var(--gutter); }
+.frame .kicker { position: absolute; top: 36px; left: var(--gutter); font-family: var(--display); font-weight: 500; font-size: 1.15rem; letter-spacing: -0.01em; }
+.cap { grid-column: 1 / span 4; align-self: center; margin-top: -60px; }
+.cap .yr { font-family: var(--display); font-weight: 600; font-size: clamp(5rem, 9vw, 8.5rem); line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.cap h3 { margin-top: 22px; font-family: var(--display); font-weight: 600; font-size: 2rem; letter-spacing: -0.02em; }
+.cap p { margin-top: 10px; font-size: 1.08rem; max-width: 34ch; }
+.cap a { display: inline-block; margin-top: 18px; font-weight: 600; text-underline-offset: 4px; }
+.slabwrap { grid-column: 6 / span 6; display: grid; place-items: center; margin-top: -40px; }
+.slab { overflow: hidden; box-shadow: -20px 36px 70px -28px oklch(0.15 0.02 165 / 0.55); }
+.slab.phone { width: 300px; height: 651px; border-radius: 46px; }
+.slab.phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.slab.web { width: 760px; height: 475px; border-radius: 16px; }
+.slab.web img { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+.slab.unlit { background: oklch(0.15 0.012 165); position: relative; box-shadow: -20px 36px 70px -28px oklch(0 0 0 / 0.6), inset 0 0 0 1px oklch(1 0 0 / 0.06); }
+.slab.unlit::after { content: ""; position: absolute; inset: 0; background: linear-gradient(118deg, oklch(1 0 0 / 0.07) 0%, oklch(1 0 0 / 0) 38%); }
+
+/* the ruler: full bleed, fixed marker, tape slides */
+.ruler { position: absolute; left: 0; right: 0; bottom: 0; height: 120px; }
+.ruler .marker { position: absolute; left: 50%; bottom: 0; width: 2px; height: 76px; background: currentColor; transform: translateX(-1px); }
+.ruler .tape { position: absolute; bottom: 0; height: 100%; display: flex; align-items: flex-end; white-space: nowrap; }
+.ruler { --yw: 240px; }
+.ruler .yr { position: relative; width: var(--yw); height: 100%; flex: none;
+  background-image: repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px 20px);
+  background-size: 100% 18px; background-repeat: no-repeat; background-position: bottom left; opacity: 0.55; }
+.ruler .yr::before { content: ""; position: absolute; left: 0; bottom: 0; width: 1px; height: 44px; background: currentColor; }
+.ruler .yr span { position: absolute; left: 8px; bottom: 50px; font-weight: 600; font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.ruler .yr.on { opacity: 1; }
+
+.s-next { background: oklch(0.24 0.02 165); color: oklch(0.96 0.005 165); }
+.s-cax  { background: oklch(0.66 0.17 45); color: oklch(0.2 0.03 45); }
+.s-onerm{ background: oklch(0.80 0.12 168); color: oklch(0.22 0.03 168); }
+
+/* ledger + door (static) */
+.work { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; padding: 120px var(--gutter) 80px; }
+.work h2 { grid-column: 1 / span 4; font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 3.2vw, 3rem); letter-spacing: -0.03em; line-height: 1.02; }
+.rows { grid-column: 5 / span 8; }
+.row { display: grid; grid-template-columns: 9.5rem 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--line); }
+.row .when { color: var(--ink-2); font-variant-numeric: tabular-nums; font-size: 0.95rem; padding-top: 3px; }
+.row b { font-family: var(--display); font-weight: 600; font-size: 1.35rem; letter-spacing: -0.015em; }
+.row .role { color: var(--ink-2); }
+.row p { margin-top: 6px; }
+
+@media (max-width: 760px) {
+  .hero h1, .hero .lede, .hero .label { grid-column: 1 / -1; }
+  .feat { padding-right: 0; }
+  .feat .copy, .feat .stage { grid-column: 1 / -1; }
+  .feat .stage { min-height: 0; }
+  .feat .screen { position: relative; left: auto; width: 320px; margin: 40px -60px 0 auto; border-radius: 34px; }
+  .note { display: none; }
+  .frame { height: auto; min-height: 844px; padding-top: 90px; padding-bottom: 150px; }
+  .cap, .slabwrap { grid-column: 1 / -1; margin-top: 0; }
+  .cap .yr { font-size: 4.2rem; }
+  .slabwrap { margin-top: 28px; }
+  .slab.phone { width: 220px; height: 477px; border-radius: 34px; }
+  .slab.web { width: 100%; height: auto; aspect-ratio: 16 / 10; }
+  .ruler { --yw: 150px; }
+  .work h2, .rows { grid-column: 1 / -1; }
+  .work h2 { margin-bottom: 24px; }
+  .row { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="name" href="#">Juan Castillo</a>
+  <button class="toggle" aria-label="Switch to dark theme">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M13.5 9.6A5.5 5.5 0 0 1 6.4 2.5a5.5 5.5 0 1 0 7.1 7.1Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+  </button>
+</header>
+
+<section class="hero">
+  <h1>I make apps for the gym <img class="ic" src="../public/images/projects/onerm-icon.png" alt="OneRM"><img class="ic" src="../public/images/projects/atlas-icon.png" alt="Atlas">, the race track <img class="ic cax" src="../public/images/projects/calautox-icon.svg" alt="CalAutoX"> and dinner plans <img class="ic" src="../public/images/projects/wsigte-icon.png" alt="WSIGTE">.</h1>
+  <div class="label">
+    <dl><dt>Now</dt><dd>Agile Six, building VA.gov appointments, front and back end</dd><dt>Also</dt><dd>Native iOS in Swift, React Native</dd><dt>Before</dt><dd>Tesla, KFC, First Tech</dd><dt>Based</dt><dd>Northern California</dd><dt>Weekends</dt><dd>Autocross</dd></dl>
+    <p class="avail"><i></i>Taking on select projects.</p>
+  </div>
+</section>
+
+<section class="feat">
+  <div class="copy">
+    <h2><img src="../public/images/projects/onerm-icon.png" alt="">OneRM</h2>
+    <p class="sub">A workout logger that works out your one-rep max from the sets you already log. Free on the App Store, with no ads, no subscriptions and no trackers.</p>
+    <p class="meta">Designed and built solo. React Native, Expo, WatermelonDB.</p>
+    <a class="btn" href="#">Get it on the App Store</a>
+  </div>
+  <div class="stage">
+    <p class="note n1">Every logged set feeds an estimated max, charted over time.</p>
+    <p class="note n2">Weight and reps step in plate-sized jumps.</p>
+    <p class="note n3">Each past session keeps the best max it produced.</p>
+    <div class="screen"><img src="../public/images/projects/onerm1.png" alt="OneRM exercise screen with a one-rep max history chart"></div>
+  </div>
+</section>
+
+<!-- Rewind, stop 0: the secret -->
+<section class="frame s-next" id="rewind">
+  <p class="kicker">Everything I've shipped, newest first.</p>
+  <div class="cap">
+    <div class="yr">Next</div>
+    <h3>Untitled game</h3>
+    <p>Fate, Lightly Seeded</p>
+  </div>
+  <div class="slabwrap"><div class="slab phone unlit"></div></div>
+  <div class="ruler">
+    <div class="tape" style="left: calc(50% - 8 * var(--yw))">
+      <div class="yr"><span>2019</span></div><div class="yr"><span>2020</span></div><div class="yr"><span>2021</span></div><div class="yr"><span>2022</span></div><div class="yr"><span>2023</span></div><div class="yr"><span>2024</span></div><div class="yr"><span>2025</span></div><div class="yr"><span>2026</span></div><div class="yr on"><span>Next</span></div>
+    </div>
+    <div class="marker"></div>
+  </div>
+</section>
+
+<!-- Rewind, stop 1: CalAutoX (browser-shaped slab) -->
+<section class="frame s-cax">
+  <p class="kicker">Everything I've shipped, newest first.</p>
+  <div class="cap">
+    <div class="yr">2026</div>
+    <h3>CalAutoX</h3>
+    <p>Results for SFRSCCA autocross: season standings, every run time, and live timing while an event runs.</p>
+    <a href="#">Open sfr.calautox.com</a>
+  </div>
+  <div class="slabwrap"><div class="slab web"><img src="../public/images/projects/calautox-1.png" alt="CalAutoX 2026 championship standings"></div></div>
+  <div class="ruler">
+    <div class="tape" style="left: calc(50% - 7 * var(--yw))">
+      <div class="yr"><span>2019</span></div><div class="yr"><span>2020</span></div><div class="yr"><span>2021</span></div><div class="yr"><span>2022</span></div><div class="yr"><span>2023</span></div><div class="yr"><span>2024</span></div><div class="yr"><span>2025</span></div><div class="yr on"><span>2026</span></div><div class="yr"><span>Next</span></div>
+    </div>
+    <div class="marker"></div>
+  </div>
+</section>
+
+<!-- Rewind, stop 2: OneRM (phone slab) -->
+<section class="frame s-onerm">
+  <p class="kicker">Everything I've shipped, newest first.</p>
+  <div class="cap">
+    <div class="yr">2025</div>
+    <h3>OneRM</h3>
+    <p>A workout logger that estimates your one-rep max.</p>
+    <a href="#">App Store</a>
+  </div>
+  <div class="slabwrap"><div class="slab phone"><img src="../public/images/projects/onerm2.png" alt="OneRM plate calculator"></div></div>
+  <div class="ruler">
+    <div class="tape" style="left: calc(50% - 6 * var(--yw))">
+      <div class="yr"><span>2019</span></div><div class="yr"><span>2020</span></div><div class="yr"><span>2021</span></div><div class="yr"><span>2022</span></div><div class="yr"><span>2023</span></div><div class="yr"><span>2024</span></div><div class="yr on"><span>2025</span></div><div class="yr"><span>2026</span></div><div class="yr"><span>Next</span></div>
+    </div>
+    <div class="marker"></div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <h2>Where I've worked</h2>
+  <div class="rows">
+    <div class="row"><div class="when">Aug 2024 – now</div><div><b>Agile Six</b> <span class="role">· Senior React Native Engineer</span><p>Mobile and web apps for veterans.</p></div></div>
+    <div class="row"><div class="when">Mar 2022 – Jul 2024</div><div><b>Tesla</b> <span class="role">· Software Engineer</span><p>Mobile and backend features for Tesla's apps.</p></div></div>
+    <div class="row"><div class="when">Mar 2021 – Mar 2022</div><div><b>KFC US</b> <span class="role">· Associate Manager, RIS and React Native Developer</span><p>Led mobile engineering on the RIS team.</p></div></div>
+    <div class="row"><div class="when">Aug 2019 – Jul 2020</div><div><b>First Tech Federal Credit Union</b> <span class="role">· Mobile Engineer</span><p>Worked on the First Tech banking app.</p></div></div>
+  </div>
+</section>
+
+</body>
+</html>

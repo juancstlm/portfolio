@@ -1,199 +1,131 @@
 {
-  "bio": "I'm Juan Castillo, a California-based maker building apps and racing cars on the weekend.",
-  "availableForWork": true,
-  "availableText": "Available for select projects",
+  "label": [
+    { "term": "Now", "detail": "Agile Six, building VA.gov appointments, front and back end" },
+    { "term": "Also", "detail": "Native iOS in Swift, React Native" },
+    { "term": "Before", "detail": "Tesla, KFC, First Tech" },
+    { "term": "Based", "detail": "Northern California" },
+    { "term": "Weekends", "detail": "Autocross" }
+  ],
+  "availability": "Taking on select projects.",
   "footer": {
-    "copyright": "2026 Juan Castillo",
+    "copyright": "© 2026 Juan Castillo",
     "tagline": "Built in Northern California"
   },
   "links": [
-    {
-      "label": "GitHub",
-      "href": "https://github.com/juancstlm",
-      "handle": "@juancstlm",
-      "icon": "github"
-    },
-    {
-      "label": "LinkedIn",
-      "href": "https://www.linkedin.com/in/juancstlm",
-      "handle": "in/juancstlm",
-      "icon": "linkedin"
-    },
-    {
-      "label": "Email",
-      "href": "mailto:juancstlm@gmail.com",
-      "handle": "Email me",
-      "icon": "mail"
-    }
+    { "label": "Email", "href": "mailto:juancstlm@gmail.com", "handle": "email", "show": "" },
+    { "label": "GitHub", "href": "https://github.com/juancstlm", "handle": "@juancstlm", "show": "@juancstlm" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/juancstlm", "handle": "in/juancstlm", "show": "in/juancstlm" }
   ],
   "work": [
     {
-      "company": "agile six",
+      "company": "Agile Six",
       "role": "Senior React Native Software Engineer",
-      "period": "Aug 2024 - Present",
-      "location": "Remote",
-      "summary": "Building a better mobile and web experience for veterans.",
-      "stack": ["React Native", "React.js"],
-      "current": true
+      "period": "Aug 2024 – now",
+      "summary": "The appointments part of VA.gov, front end and back end."
     },
     {
       "company": "Tesla",
       "role": "Software Engineer",
-      "period": "Mar 2022 - Jul 2024",
-      "location": "Fremont, CA",
-      "summary": "Shipped mobile and backend features across Tesla's product surface.",
-      "stack": ["React Native", "Go", "TypeScript", "PostgreSQL"],
-      "current": false
+      "period": "Mar 2022 – Jul 2024",
+      "summary": "Mobile and backend features for Tesla's apps."
     },
     {
       "company": "KFC US",
-      "role": "Associate Manager, RIS · React Native Developer",
-      "period": "Mar 2021 - Mar 2022",
-      "location": "Remote",
-      "summary": "React Native development and mobile engineering leadership on the RIS team.",
-      "stack": ["React Native", "TypeScript"],
-      "current": false
+      "role": "Associate Manager, RIS and React Native Developer",
+      "period": "Mar 2021 – Mar 2022",
+      "summary": "Led mobile engineering on the RIS team."
     },
     {
       "company": "First Tech Federal Credit Union",
       "role": "Mobile Engineer",
-      "period": "Aug 2019 - Jul 2020",
-      "location": "California",
-      "summary": "Mobile engineering on the First Tech banking app.",
-      "stack": ["React Native"],
-      "current": false
+      "period": "Aug 2019 – Jul 2020",
+      "summary": "Worked on the First Tech banking app."
     }
   ],
   "apps": [
     {
+      "id": "next",
+      "history": "next",
+      "secret": true,
+      "year": "Next",
+      "name": "Something new",
+      "caption": "Fate, Lightly Seeded",
+      "kind": "none",
+      "icon": null,
+      "screen": null,
+      "link": null,
+      "linkLabel": null,
+      "storeLine": null
+    },
+    {
       "id": "calautox",
-      "name": "CalAutoX",
-      "tag": "Autocross results portal",
+      "history": "calautox",
+      "secret": false,
       "year": "2026",
-      "status": "Live at sfr.calautox.com",
-      "statusKind": "live",
-      "blurb": "Championship results portal for SFRSCCA autocross — season standings, per-event results, and live in-event timing.",
-      "description": "CalAutoX is the season-long results portal for SFRSCCA / California Auto X autocross. Drivers can browse championship standings, per-event class results, and individual run times; a live view streams the in-progress order every second during a race. Organizers post final results and correct scores through an authenticated admin dashboard, with every change audit-logged. Self-hosted on Proxmox behind a Cloudflare Tunnel.",
-      "icon": "/images/projects/calautox-icon.svg",
-      "image": "/images/projects/calautox-1.png",
-      "images": ["/images/projects/calautox-1.png"],
+      "name": "CalAutoX",
+      "caption": "Results for SFRSCCA autocross: season standings, every run time, and live timing while an event runs.",
+      "kind": "web",
+      "icon": { "src": "/images/projects/calautox-icon.svg", "width": 512, "height": 512, "bg": "#121417" },
+      "screen": { "src": "/images/projects/calautox-1.webp", "width": 1440, "height": 900, "alt": "CalAutoX 2026 championship standings, by class" },
       "link": "https://sfr.calautox.com",
-      "linkLabel": "Open site",
-      "tech": ["Go", "React", "TypeScript", "PostgreSQL", "Vite", "Docker"],
-      "tint": "#59D50B",
-      "displayMode": "image",
-      "featured": false
+      "linkLabel": "Open sfr.calautox.com",
+      "storeLine": null
     },
     {
       "id": "onerm",
-      "name": "OneRM",
-      "tag": "Workout logger",
+      "history": "onerm",
+      "secret": false,
       "year": "2025",
-      "status": "Live on App Store",
-      "statusKind": "live",
-      "blurb": "A more refined version of Atlas",
-      "description": "OneRM strips the workout logger down to the calculation. Pick a lift, enter your working weight and reps, and get an estimated one-rep max with a warm-up ramp. Built with React Native and Expo, with WatermelonDB for local storage, Apple Health integration, and i18n support.",
-      "icon": "/images/projects/onerm-icon.png",
-      "image": "/images/projects/onerm4.png",
-      "images": [
-        "/images/projects/onerm2.png",
-        "/images/projects/onerm1.png",
-        "/images/projects/onerm3.png"
-      ],
+      "name": "OneRM",
+      "caption": "A workout logger that estimates your one-rep max from the sets you log.",
+      "kind": "phone",
+      "icon": { "src": "/images/projects/onerm-icon.webp", "width": 256, "height": 256, "bg": null },
+      "screen": { "src": "/images/projects/onerm1.webp", "width": 1170, "height": 2541, "alt": "OneRM exercise screen with a one-rep max history chart" },
       "link": "https://apps.apple.com/us/app/onerm-workout-logger/id6746527690",
       "linkLabel": "App Store",
-      "privacy": "/OneRM/privacy/",
-      "tech": ["React Native", "Expo", "WatermelonDB", "TypeScript", "APNS"],
-      "tint": "#4ad6a3",
-      "displayMode": "image",
-      "featured": true,
-      "featuredDetails": {
-        "role": "Sole designer & developer",
-        "stack": "React Native · Expo · WatermelonDB · TypeScript",
-        "status": "In development"
-      }
-    },
-    {
-      "id": "ezbudget",
-      "name": "ezBudget",
-      "tag": "Budget tracker",
-      "year": "2025",
-      "status": "In development",
-      "statusKind": "dev",
-      "blurb": "A personal budgeting app for tracking income, expenses, and recurring transactions.",
-      "description": "ezBudget helps you stay on top of your finances with budgets, transaction logging, and recurring expense tracking. Built with React Native and Expo, using WatermelonDB for local storage, CloudKit sync, and Skia-powered charts.",
-      "icon": "/images/projects/ezbudget-icon.png",
-      "image": "",
-      "images": [],
-      "link": "",
-      "linkLabel": "Coming soon",
-      "tech": ["React Native", "Expo", "WatermelonDB", "Skia", "TypeScript"],
-      "tint": "#000000",
-      "displayMode": "image",
-      "featured": false
+      "storeLine": "Version {version}, rated {rating}."
     },
     {
       "id": "atlas-design-system",
-      "name": "Atlas Design System",
-      "tag": "React Native component library",
+      "history": "ads",
+      "secret": false,
       "year": "2024",
-      "status": "Live on npm",
-      "statusKind": "live",
-      "blurb": "A themable React Native component library with 20+ components. Powers Atlas and other apps.",
-      "description": "A themable design system library with core UI components for React Native. Includes buttons, text inputs, sheets, segmented controls, forms, and more. Built with TypeScript, supports light and dark themes out of the box, and is published on npm.",
-      "icon": "/images/projects/ads-icon.svg",
-      "image": "/images/projects/ads.png",
-      "images": ["/images/projects/ads.png"],
+      "name": "Atlas Design System",
+      "caption": "The React Native component library behind Atlas and my other apps. 20+ components, light and dark themes.",
+      "kind": "web",
+      "icon": { "src": "/images/projects/ads-icon.webp", "width": 256, "height": 256, "bg": null },
+      "screen": { "src": "/images/projects/ads.webp", "width": 1662, "height": 1245, "alt": "Atlas Design System screens: text, inputs, colours and navigation rows" },
       "link": "https://www.npmjs.com/package/atlas-design-system",
       "linkLabel": "npm",
-      "tech": ["React Native", "TypeScript", "Reanimated", "Informed"],
-      "tint": "#4ad6a3",
-      "displayMode": "image",
-      "featured": false
+      "storeLine": null
     },
     {
       "id": "atlas",
-      "name": "Atlas",
-      "tag": "Workout tracker",
+      "history": "atlas",
+      "secret": false,
       "year": "2020",
-      "status": "Live on App Store",
-      "statusKind": "live",
-      "blurb": "A clean, stats-focused workout logger for iOS. Designed and built solo with React Native.",
-      "description": "Atlas is a workout logger built for people who care about progressive overload. It tracks lifts, computes 1RMs, and gets out of the way during a session. Built solo with React Native, Redux, and Realm.",
-      "icon": "/images/projects/atlas-icon.png",
-      "image": "/images/projects/atlas1.png",
-      "images": [
-        "/images/projects/atlas1.png",
-        "/images/projects/atlas2.png",
-        "/images/projects/atlas3.png"
-      ],
+      "name": "Atlas",
+      "caption": "A stats-focused workout logger for iOS, designed and built solo.",
+      "kind": "phone",
+      "icon": { "src": "/images/projects/atlas-icon.webp", "width": 256, "height": 256, "bg": null },
+      "screen": { "src": "/images/projects/atlas2.webp", "width": 1170, "height": 2532, "alt": "Atlas dashboard with lifetime statistics and a list of workouts" },
       "link": "https://apps.apple.com/us/app/atlas-workout-logger/id1538171180",
       "linkLabel": "App Store",
-      "tech": ["React Native", "Redux", "Realm", "Jest"],
-      "tint": "#4ad6a3",
-      "displayMode": "stack",
-      "featured": false
+      "storeLine": "Rated {rating} from {ratings} ratings."
     },
     {
       "id": "wsigte",
-      "name": "WSIGTE",
-      "tag": "Where Should I Go To Eat?",
+      "history": "wsigte",
+      "secret": false,
       "year": "2019",
-      "status": "Live at wsigte.com",
-      "statusKind": "live",
-      "blurb": "Map-based restaurant roulette for indecisive groups. A tribute to wtfsigte.com.",
-      "description": "Tap a button, get a place. WSIGTE picks somewhere nearby for when nobody can decide. Built on Apple MapKit JS, with a Lambda backend handling auth and tokens.",
-      "icon": "/images/projects/wsigte-icon.png",
-      "image": "/images/projects/wsigte-1.png",
-      "images": [
-        "/images/projects/wsigte-1.png"
-      ],
+      "name": "WSIGTE",
+      "caption": "Where Should I Go To Eat? Tap once and it picks a place nearby, for groups who can't decide.",
+      "kind": "web",
+      "icon": { "src": "/images/projects/wsigte-icon.webp", "width": 256, "height": 256, "bg": null },
+      "screen": { "src": "/images/projects/wsigte-1.webp", "width": 1280, "height": 800, "alt": "WSIGTE map with a route to the restaurant it picked" },
       "link": "https://www.wsigte.com",
-      "linkLabel": "Open site",
-      "tech": ["React", "MapKit JS", "AWS Lambda", "Express"],
-      "tint": "#c2410c",
-      "displayMode": "image",
-      "featured": false
+      "linkLabel": "Open wsigte.com",
+      "storeLine": null
     }
   ]
 }

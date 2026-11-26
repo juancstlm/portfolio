@@ -1,0 +1,38 @@
+/* /apps: one editorial row per app, newest first. Same tokens and type as home; no scroll scene, no entrances.
+   Each row: year (left rail) · icon, name, caption, link · one screen. Phone screens are rounded like the featured
+   OneRM screen (13% of their width); web screens are rounded rects. The first row ("Something new") is type only. */
+
+.apps { padding: clamp(40px, 9vh, 112px) var(--gutter) 40px; }
+.apps-h { max-width: 20ch; font-family: var(--display); font-weight: 600; font-size: clamp(2.4rem, 4.6vw, 4.5rem); line-height: 1.04; letter-spacing: -0.032em; text-wrap: balance; margin-bottom: clamp(56px, 9vh, 112px); }
+
+.ap { display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; padding: 40px 0 72px; border-top: 1px solid var(--line); }
+.ap-year { grid-column: 1 / span 2; font-family: var(--display); font-weight: 600; font-size: 1.35rem; letter-spacing: -0.015em; line-height: 1.2; color: var(--ink-2); font-variant-numeric: tabular-nums; padding-top: 10px; }
+.ap-copy { grid-column: 3 / span 4; align-self: start; }
+.ap h2 { display: flex; align-items: center; gap: 14px; font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 2.8vw, 2.6rem); letter-spacing: -0.03em; line-height: 1.05; }
+.ap-ic { flex: none; width: 48px; height: 48px; border-radius: 22.5%; object-fit: cover; box-shadow: 0 1px 0 oklch(0.23 0.02 165 / 0.06), 0 6px 16px -6px oklch(0.23 0.02 165 / 0.35); }
+.ap-ic.ap-cax { background: #121417; padding: 4px; object-fit: contain; }
+/* "Something new": a dark tile with one light dot, the same mark it carries in the commit peak */
+.ap-dot { position: relative; background: oklch(0.2 0.015 165); }
+.ap-dot::after { content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: oklch(0.97 0.004 165); }
+[data-theme="dark"] .ap-dot { background: oklch(0.95 0.006 165); }
+[data-theme="dark"] .ap-dot::after { background: oklch(0.19 0.01 165); }
+.ap-cap { margin-top: 18px; font-size: 1.1rem; max-width: 36ch; }
+.ap-fate { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 2.6vw, 2.4rem); letter-spacing: -0.025em; line-height: 1.05; max-width: 14ch; }
+.ap-link { display: inline-block; margin-top: 18px; font-weight: 600; text-underline-offset: 4px; }
+.ap-link::after { content: " \2197"; }
+
+.ap-shot { grid-column: 7 / -1; }
+.ap-shot img { width: 100%; height: auto; }
+.ap-web .ap-shot img { border-radius: 12px; box-shadow: -16px 28px 60px -32px var(--shadow), 0 0 0 1px var(--line); }
+.ap-phone .ap-shot { --pw: clamp(220px, 21vw, 300px); }
+.ap-phone .ap-shot img { width: var(--pw); border-radius: calc(var(--pw) * 0.13); box-shadow: -16px 28px 60px -30px var(--shadow), 0 0 0 1px var(--line); }
+.ap-none { padding-bottom: 88px; }
+
+@media (max-width: 760px) {
+  .ap { padding: 28px 0 56px; }
+  .ap-year { grid-column: 1 / -1; padding-top: 0; font-size: 1.1rem; margin-bottom: 14px; }
+  .ap-copy, .ap-shot { grid-column: 1 / -1; }
+  .ap-shot { margin-top: 32px; }
+  .ap-phone .ap-shot { --pw: 240px; }
+  .ap-none { padding-bottom: 64px; }
+}

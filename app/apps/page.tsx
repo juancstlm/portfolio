@@ -1,103 +1,65 @@
+import type { Metadata } from "next";
 import siteData from "@/data/site-data.json";
-import AppsNav from "./AppsNav";
-import AppLink from "./AppLink";
-import ScreenshotStack from "@/components/ScreenshotStack";
+import Top from "@/components/Top";
 import Footer from "@/components/Footer";
-import styles from "./page.module.css";
+import TrackedLink from "@/components/TrackedLink";
 
+export const metadata: Metadata = {
+  title: "Apps · Juan Castillo",
+  description: "Everything I've shipped, newest first.",
+};
+
+// One section per app, newest first, each with id="<app id>" so old /apps#<id> links still land.
 export default function AppsPage() {
-  const apps = [...siteData.apps].sort((a, b) => Number(b.year) - Number(a.year));
-
+  const firstShot = siteData.apps.findIndex((a) => a.screen);
   return (
-    <main className={styles.main}>
-      <AppsNav />
-
-      <header className={styles.header}>
-        <div className={styles.label}>Index · {apps.length} apps</div>
-        <h1 className={styles.heading}>Personal apps and tools.</h1>
-        <p className={styles.subtitle}>
-          Things I&rsquo;ve built for myself that turned out to be useful for
-          other people too. Each has its own story below.
-        </p>
-      </header>
-
-      <div className={styles.appList}>
-        {apps.map((app) => (
-          <article key={app.id} id={app.id} className={styles.card}>
-            <div className={styles.cardInfo}>
-              <div className={styles.cardIdent}>
+    <>
+      <Top current="apps" />
+      <main className="apps">
+        <h1 className="apps-h">Everything I&apos;ve shipped, newest first.</h1>
+        {siteData.apps.map((app, i) => (
+          <section key={app.id} id={app.id} className={`ap ap-${app.kind}`} aria-labelledby={`${app.id}-name`}>
+            <p className="ap-year">{app.year}</p>
+            <div className="ap-copy">
+              <h2 id={`${app.id}-name`}>
                 {app.icon ? (
-                  <img src={app.icon} alt="" className={styles.icon} />
-                ) : (
-                  <div
-                    className={styles.iconPlaceholder}
-                    style={{ background: app.tint }}
-                  >
-                    {app.name[0]}
-                  </div>
-                )}
-                <div>
-                  <div className={styles.appName}>{app.name}</div>
-                  <div className={styles.appTag}>{app.tag}</div>
-                </div>
-              </div>
-
-              <p className={styles.description}>{app.description}</p>
-
-              <div className={styles.techTags}>
-                {app.tech.map((t) => (
-                  <span key={t} className={styles.tag}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <div className={styles.cardActions}>
-                {app.link ? (
-                  <AppLink
-                    appId={app.id}
-                    href={app.link}
-                    label={app.linkLabel}
-                    className={styles.cta}
+                  <img
+                    className={app.icon.bg ? "ap-ic ap-cax" : "ap-ic"}
+                    src={app.icon.src}
+                    alt=""
+                    width={app.icon.width}
+                    height={app.icon.height}
+                    loading="lazy"
+                    decoding="async"
                   />
                 ) : (
-                  <span className={styles.comingSoon}>{app.linkLabel}</span>
+                  <span className="ap-ic ap-dot" aria-hidden="true"></span>
                 )}
-                {"privacy" in app && app.privacy ? (
-                  <a href={app.privacy} className={styles.secondaryLink}>
-                    Privacy
-                  </a>
-                ) : null}
-                <span
-                  className={styles.status}
-                  style={{
-                    color:
-                      app.statusKind === "live"
-                        ? "var(--accent)"
-                        : "var(--mute)",
-                  }}
-                >
-                  ● {app.status}
-                </span>
-              </div>
+                {app.name}
+              </h2>
+              <p className={app.secret ? "ap-cap ap-fate" : "ap-cap"}>{app.caption}</p>
+              {app.link && app.linkLabel ? (
+                <TrackedLink className="ap-link" href={app.link} event="app_link_click" data={{ app: app.id, source: "apps_page" }}>
+                  {app.linkLabel}
+                </TrackedLink>
+              ) : null}
             </div>
-
-            <div className={styles.visual}>
-              {app.displayMode === "stack" && app.images.length >= 3 ? (
-                <ScreenshotStack images={app.images} />
-              ) : app.displayMode === "image" && (app.image || app.images.length > 0) ? (
-                <img src={app.image || app.images[0]} alt="" />
-              ) : (
-                <div className={styles.placeholder}>
-                  Coming soon
-                </div>
-              )}
-            </div>
-          </article>
+            {app.screen ? (
+              <figure className="ap-shot">
+                <img
+                  src={app.screen.src}
+                  alt={app.screen.alt}
+                  width={app.screen.width}
+                  height={app.screen.height}
+                  loading={i === firstShot ? "eager" : "lazy"}
+                  decoding="async"
+                />
+              </figure>
+            ) : null}
+          </section>
         ))}
-      </div>
-
+      </main>
       <Footer />
-    </main>
+    </>
   );
 }
