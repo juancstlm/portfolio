@@ -292,7 +292,7 @@ export function mountCommitPeak(sec: HTMLElement, H: History): () => void {
         m.side = (m.f - c.a) / c.w < 0.55 ? "r" : "l";
         both(mEls[i].card, (c) => (c.className = "d-card" + (docked ? "" : " d-" + m.side)));
       });
-      const note = vw < 760 ? "Each year gets the same width. Heights use a square-root scale." : "Each year gets the same width. Heights use a square-root scale, so busy days don't flatten the rest.";
+      const note = "Not to scale: each year is the same width.";
       both(noteEl, (n) => { n.textContent = note; n.style.width = vw < 760 ? span + "px" : "auto"; });
       both(legendEl, (l) => (l.style.display = vw < 760 ? "none" : ""));
       measure();
