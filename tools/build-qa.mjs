@@ -26,7 +26,7 @@ async function open(w, { theme = "light", rm = false, js = true } = {}) {
     window.__perf = { cls: 0, shifts: [], lcp: null };
     try {
       new PerformanceObserver((l) => { for (const e of l.getEntries()) if (!e.hadRecentInput) { window.__perf.cls += e.value; window.__perf.shifts.push({ v: +e.value.toFixed(4), t: Math.round(e.startTime), src: e.sources?.map((s) => s.node?.className || s.node?.nodeName).join("|") }); } }).observe({ type: "layout-shift", buffered: true });
-      new PerformanceObserver((l) => { const e = l.getEntries().at(-1); const n = e.element; window.__perf.lcp = { t: Math.round(e.startTime), size: e.size, tag: n?.tagName, cls: n?.className, text: (n?.textContent || "").trim().slice(0, 50), url: e.url, inHero: !!n?.closest?.(".hero h1") }; }).observe({ type: "largest-contentful-paint", buffered: true });
+      new PerformanceObserver((l) => { const e = l.getEntries().at(-1); const n = e.element; window.__perf.lcp = { t: Math.round(e.startTime), size: e.size, tag: n?.tagName, cls: n?.className, text: (n?.textContent || "").trim().slice(0, 50), url: e.url, inHero: !!n?.closest?.(".hero") }; }).observe({ type: "largest-contentful-paint", buffered: true });
     } catch (e) {}
   });
   const page = await ctx.newPage();
@@ -111,7 +111,7 @@ for (const w of [1440, 390]) for (const route of ["/", "/apps/"]) {
   await page.goto(BASE + route, { waitUntil: "load" });
   await settle(page, 3000);
   const p = await page.evaluate(() => window.__perf);
-  const lcpOk = route === "/" ? p.lcp?.inHero : p.lcp && p.lcp.t < 2500; // home: a line of the hero sentence; /apps: just fast
+  const lcpOk = route === "/" ? p.lcp?.inHero && p.lcp.t < 2500 : p.lcp && p.lcp.t < 2500; // home: hero text (sentence or label; which wins varies with the entrance timing); /apps: just fast
   const line = `${route} ${w}: LCP ${p.lcp?.t}ms <${p.lcp?.tag?.toLowerCase()} class="${p.lcp?.cls}"> "${p.lcp?.text}" ${p.lcp?.url || ""}; CLS ${p.cls.toFixed(4)} ${p.shifts.length ? JSON.stringify(p.shifts) : ""}`;
   if (!lcpOk || p.cls > 0.01) fail(line); else ok(line);
   await ctx.close();
